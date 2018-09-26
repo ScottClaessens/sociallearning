@@ -2,6 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
+import numpy as np
 
 
 author = 'Scott Claessens'
@@ -20,14 +21,29 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    qlist = ['sl2_1a', 'sl2_1b', 'sl2_2a', 'sl2_2b',
-            'sl2_3a', 'sl2_3b', 'sl2_4a', 'sl2_4b',
-            'sl2_5a', 'sl2_5b', 'sl2_6a', 'sl2_6b',
-            'sl2_7a', 'sl2_7b', 'sl2_8a', 'sl2_8b']
+    pass
 
 
 class Group(BaseGroup):
-    pass
+    def calculate_revenue(self):
+        # determine p (players choosing 1 == A)
+        count = 0
+        for player in self.get_players():
+            if player.decision == 1:  # A
+                count += 1
+        p = count / 8
+        print('p:', p)
+        # calculate revenue for each player
+        a = self.session.config['exp1_a_payoff']
+        b = self.session.config['exp1_b_payoff']
+        c = self.session.config['exp1_c_payoff']
+        d = self.session.config['exp1_d_payoff']
+        for player in self.get_players():
+            if player.decision == 1:  # A
+                player.revenue = (p * a) + ((1 - p) * b) + int(np.random.normal(0, self.session.config['sigma'], 1))
+            else:
+                player.revenue = (p * c) + ((1 - p) * d) + int(np.random.normal(0, self.session.config['sigma'], 1))
+            print('revenue:', player.revenue)
 
 
 class Player(BasePlayer):

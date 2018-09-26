@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 1 - Season {{ player.round_number }}
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+p h1 {text-align: center}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>Results from this Season</h1>
+<br>
+<p>You produced {{ decision }}.</p>
+<p>Your revenue: <b>{{ player.revenue|c }}</b></p>
+<br>
+{% if player.sl1 == 1 %}
+    <p>You <b>did</b> request information.</p>
+    <p>Costs: <b>{{ 25|c }}</b></p>
+{% else %}
+    <p>You <b>did not</b> request information.</p>
+    <p>Costs: <b>{{ 0|c }}</b></p>
+{% endif %}
+<br>
+{% if player.sl1 == 1 %}
+    <p>Points earned in this Season: {{ player.revenue }} - 25 = <b>{{ earnings|c }}</b></p>
+{% else %}
+    <p>Points earned in this Season: <b>{{ earnings|c }}</b></p>
+{% endif %}
+
+{% next_button %}
+
+{% include Constants.rules %}
+
+{% endblock %}

@@ -1,6 +1,5 @@
 from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
-from .models import Constants
 
 
 class Intro(Page):
@@ -41,6 +40,9 @@ class Begin(Page):
     def is_displayed(self):
         return self.player.round_number == 1
 
+    def before_next_page(self):
+        self.participant.vars['total_earnings'] = 2500
+
 
 class SocialLearning1(Page):
     form_model = 'player'
@@ -54,13 +56,19 @@ class SocialLearning2(Page):
     form_model = 'player'
 
     def get_form_fields(self):
-        qlist = self.subsession.qlist
+        qlist = ['sl2_1a', 'sl2_1b', 'sl2_2a', 'sl2_2b',
+                 'sl2_3a', 'sl2_3b', 'sl2_4a', 'sl2_4b',
+                 'sl2_5a', 'sl2_5b', 'sl2_6a', 'sl2_6b',
+                 'sl2_7a', 'sl2_7b', 'sl2_8a', 'sl2_8b']
         i = self.player.id_in_group
         del qlist[(2 * i) - 2:2 * i]  # delete myself
         return qlist
 
     def error_message(self, values):
-        qlist = self.subsession.qlist
+        qlist = ['sl2_1a', 'sl2_1b', 'sl2_2a', 'sl2_2b',
+                 'sl2_3a', 'sl2_3b', 'sl2_4a', 'sl2_4b',
+                 'sl2_5a', 'sl2_5b', 'sl2_6a', 'sl2_6b',
+                 'sl2_7a', 'sl2_7b', 'sl2_8a', 'sl2_8b']
         i = self.player.id_in_group
         del qlist[(2 * i) - 2:2 * i]  # delete myself
         total = 0
@@ -89,11 +97,26 @@ class Decision(Page):
 
 class ResultsWait(WaitPage):
     def after_all_players_arrive(self):
-        
+        self.group.calculate_revenue()
 
 
 class Results(Page):
-    pass
+    def vars_for_template(self):
+        if self.player.decision == 1:
+            decision = 'Potatoes'
+        else:
+            decision = 'Wheat'
+        return {'decision': decision,
+                'earnings': self.player.revenue - int(self.player.sl1 or 0)*25}
+
+    def before_next_page(self):
+        if self.player.sl1 == 1:
+            cost = 25
+        else:
+            cost = 0
+        self.participant.vars['previous_decision']: self.player.decision
+        self.participant.vars['previous_revenue']: self.player.revenue
+        self.participant.vars['total_earnings'] += self.player.revenue - int(self.player.sl1 or 0)*25
 
 
 page_sequence = [
@@ -104,5 +127,6 @@ page_sequence = [
     SocialLearning1,
     SocialLearning2,
     Decision,
-    ResultsWait
+    ResultsWait,
+    Results
 ]

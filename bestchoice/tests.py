@@ -19,3 +19,4 @@ class PlayerBot(Bot):
             yield (pages.SocialLearning1, {'sl1': 1})
             yield (pages.SocialLearning2)
         yield (pages.Decision, {'decision': 1})
+        yield(pages.Results)
