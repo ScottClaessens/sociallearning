@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Introduction - Collecting Information
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Before making your decision, you can collect information about the decisions and revenues of the
+    Farmers in your group. Three kinds of information are available about each Farmer:
+</p>
+<ol>
+<li>Decision in the previous Season</li>
+<li>Revenue in the previous Season</li>
+<li>Total points in the current experiment</li>
+</ol>
+<p>
+    At the start of each Season, you can indicate whether or not you want to collect information.
+    Collecting information costs <b>25 points</b>. For those 25 points, you can collect up to 6 pieces of
+    information in total. Remember that your revenues only partly depend on your land production in a
+    Season. Collecting information about the decisions and revenues of other Farmers can be useful in
+    finding out which Crops the other Farmers are producing, and which Crop has the higher value.
+</p>
+<p>
+    If you indicated not to collect information, no costs will be charged. In the first Season of each
+    experiment, no information is available yet. At the start of the session, a test trial will make you
+    familiar with the decision making environment on the computer screen. This test trial lasts for 5
+    Seasons. You cannot earn anything; the points are not worth any money. After the test trial, the
+    experiments will start.
+</p>
+<p>
+    <i>Click Next to learn more about the session.</i>
+</p>
+
+{% next_button %}
+
+{% endblock %}

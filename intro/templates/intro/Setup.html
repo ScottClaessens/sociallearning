@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Introduction - Setup
+{% endblock %}
+
+{% block content %}
+
+<p>
+    In the coming session you own an imaginary farm. You will run this farm in <b>4 different
+    experiments</b> in which you can earn points. At the end of the session, these points will be translated
+    into real money (1000 points = 1 euro).
+</p>
+<p>
+    At the beginning of each experiment, you will be grouped with 7 randomly chosen other
+    participants in the room and each is randomly labeled with a number 1-8. All experiments
+    are <b>anonymous</b>; you cannot find out the real identity of the other Farmers in
+    your group, and they cannot find this out about you. During each experiment, your group consists
+    of the same 8 participants, but when a new experiment starts, new groups are formed. At the
+    beginning of each experiment, you will receive 2500 points to start with. The experiments are
+    completely separate – what you earn in one experiment does not influence what you can earn in the
+    other experiments. Also, it is likely that your earnings will vary between experiments.
+</p>
+<p>
+    <i>Click Next to learn more about the session.</i>
+</p>
+
+{% next_button %}
+
+{% endblock %}

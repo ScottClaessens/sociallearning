@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 1 - Quiz
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Before the Seasons for this experiment start, a short Quiz will check if you understood the Market Rules.
+</p>
+
+{% formfield player.quiz1 label="In each Season of this experiment, I can decide to produce Potatoes or Wheat." %}
+{% formfield player.quiz2 label="Before I make my decision, I can collect information about the decisions of the other Farmers in my group." %}
+{% formfield player.quiz3 label=" The revenues of my Crop production also depend on the decisions of other Farmers in my group." %}
+{% formfield player.quiz4 label="My group consists of the same Farmers during this experiment. When the experiment has finished, new groups will be formed randomly." %}
+
+{% include Constants.rules %}
+
+{% next_button %}
+
+{% endblock %}

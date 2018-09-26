@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 1 - Begin
+{% endblock %}
+
+{% block content %}
+
+<p align="center">
+    A new experiment starts now.
+</p>
+<p align="center">
+    You are Farmer {{ player.id_in_group }}.
+</p>
+<p align="center">
+    You are grouped with 7 randomly chosen other participants.
+</p>
+<p align="center">
+    You receive {{ 2500|c }} points to start with.
+</p>
+
+{% next_button %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Introduction - Welcome!
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Welcome!
+</p>
+<p>
+    This session will last for approximately 2 hours. During the session <b>it is not allowed to talk</b> or
+    communicate with the other participants. If you have a question, please raise your hand and one of
+    us will come to you to answer it. During this session you will earn money. The amount you earn
+    depends on your decisions and (sometimes) the decisions of others. At the end of the session the
+    amount you have earned, plus a show-up fee of 5 euros, will be paid to you in cash. These payments
+    are anonymous; you will be paid individually in a separate room. Please <b>stay seated at the end of
+    the session</b> until your desk number is called. We will not inform any of the other participants about
+    your earnings. It is impossible for us to associate your desk number with your identity.
+</p>
+<p>
+    <i>Click Next to learn about the session.</i>
+</p>
+
+{% next_button %}
+
+{% endblock %}

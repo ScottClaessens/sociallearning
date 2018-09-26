@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Introduction - Time Limits
+{% endblock %}
+
+{% block content %}
+
+<p>
+    In each Season (except the first of each experiment), you have <b>10 seconds</b> to decide if you want to
+    collect information about the Farmers in your group. If you have not decided within this time
+    period, you will not get the opportunity to collect information. If you indicated ‘Yes’ (and
+    confirmed), you have <b>20 seconds</b> to decide which pieces of information you wish to collect. In the
+    Decision screen the information you collected is shown to you, and you can make your decision
+    how to use your land. You have <b>20 seconds</b> to make this decision. If you have not decided (and
+    confirmed your decision) within this time period, the computer program will make a random choice
+    for you. When the Season has finished, a Results screen shows you the number of points you earned
+    in this Season. This screen is shown to you for <b>10 seconds</b>. After the Results screen, a new Season
+    will start.
+</p>
+<p>
+    After 20 Seasons, the experiment is over, and a new experiment will be started by us. At the
+    beginning of this new experiment, you will again be grouped with 7 randomly chosen other
+    participants in the room and each participant is randomly labeled with a number 1-8, and the new
+    Market Rules are explained in the computer program. After 4 experiments, the session ends.
+</p>
+<p>
+    <i>Click Next to learn more about the session.</i>
+</p>
+
+{% next_button %}
+
+{% endblock %}

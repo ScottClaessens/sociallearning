@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 1 - Season {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+
+{% if player.round_number == 1 %}
+<p>
+You cannot collect information from other Farmers in the first Season.
+</p>
+{% elif player.sl1 == 1 %}
+{#<table class="table">#}
+{#    <tr>#}
+{#        <th></th>#}
+{#        {% for p in other_players %}#}
+{#            <td>{{ p }}</td>#}
+{#        {% endfor %}#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th align="right">Previous decision:</th>#}
+{#        {% for field in form %}#}
+{#            {% if forloop.counter|divisibleby:2 %}#}
+{#            {% else %}#}
+{#                <td style="font-size:1px">{% formfield field label='' %}</td>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <th>Previous revenue:</th>#}
+{#        {% for field in form %}#}
+{#            {% if forloop.counter|divisibleby:2 %}#}
+{#                <td style="font-size:1px">{% formfield field label='' %}</td>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </tr>#}
+{#</table>#}
+{% endif %}
+
+<b>{% formfield player.decision label="Which Crop do you want to produce this Season?" %}</b>
+
+{% next_button %}
+
+{% include Constants.rules %}
+
+{% endblock %}

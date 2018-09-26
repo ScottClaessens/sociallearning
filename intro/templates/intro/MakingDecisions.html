@@ -1,0 +1,54 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Introduction - Making Decisions
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Each experiment lasts for <b>20 Seasons</b>. In each Season, you will make a decision how to use the land
+    on your farm. In each experiment, you will decide between two different options. All Farmers in
+    your group will make this decision at the same time.
+</p>
+<p>
+    Once all Farmers have made their decision, all Crops of all Farmers in your group are sold on the
+    Market. This procedure is automated in the computer program. The number of points you earn
+    (your ‘revenue’) depends on three things:
+</p>
+<ol>
+<li>
+    <b>Crop value</b>: one of the two Crops is worth more points. This Crop yields higher revenues on the Market.
+</li>
+<li>
+    <b>Your land production</b>: the number of Crops you produce in a Season is affected by things
+    that you don’t control, such as crop diseases or pests. In each Season, Farmers that make the
+    same decision, will not receive exactly the same revenues. It will sometimes occur that a
+    Farmer that chose the Crop with the higher value, will nevertheless get less revenues than a
+    Farmer that chose the Crop with the lower value. However, on average, the Crop with the
+    higher value will give higher revenues. The variation in Crop production is fully determined
+    by chance.
+</li>
+<li>
+    <b>Decisions of other Farmers</b>: in experiment 1, your revenues are independent of the
+    decisions of the other Farmers in your group. In experiments 2, 3 and 4, your revenues also
+    depend on the decisions of other Farmers. How your revenues depend on your decisions and
+    the decisions of the other Farmers in your group, is given by the ‘Market Rules’. These Rules
+    are different in each of the experiments. The Market Rules will always be explained by the
+    computer program at the beginning of each experiment. During an experiment, the Market
+    Rules remain the same. Before the Seasons of an experiment start, you will fill out a short
+    Quiz to check if you understand the Market Rules.
+</li>
+</ol>
+<p>
+    At the end of each Season, you are informed about the number of points you received for your
+    Crops. It is also possible to lose points. The points you earn are stored in the computer memory.
+</p>
+<p>
+    <i>Click Next to learn more about the session.</i>
+</p>
+
+{% next_button %}
+
+{% endblock %}

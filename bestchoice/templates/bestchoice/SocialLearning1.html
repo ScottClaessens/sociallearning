@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 1 - Season {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+
+{% formfield player.sl1 label="Do you want to collect information before making your decision in this Season?" %}
+
+{% next_button %}
+
+{% include Constants.rules %}
+
+{% endblock %}
