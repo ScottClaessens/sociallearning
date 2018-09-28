@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 1 - End of Experiment
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+.center {
+    text-align: center
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h3 class="center">Total earnings from this Experiment</h3>
+<br>
+<p class="center">You earned <b>{{ total|c }}</b> from this Experiment.</p>
+
+<p>Please click Next to continue.</p>
+
+{% next_button %}
+
+{% endblock %}

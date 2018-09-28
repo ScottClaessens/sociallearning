@@ -15,7 +15,7 @@ Social Learning Experiment - Best Choice
 class Constants(BaseConstants):
     name_in_url = 'bestchoice'
     players_per_group = 8
-    num_rounds = 2
+    num_rounds = 20
 
     rules = 'bestchoice/rules.html'
 
@@ -32,18 +32,18 @@ class Group(BaseGroup):
             if player.decision == 1:  # A
                 count += 1
         p = count / 8
-        print('p:', p)
+        # print('p:', p)
         # calculate revenue for each player
-        a = self.session.config['exp1_a_payoff']
-        b = self.session.config['exp1_b_payoff']
-        c = self.session.config['exp1_c_payoff']
-        d = self.session.config['exp1_d_payoff']
+        a = self.session.config['bestchoice_a_payoff']
+        b = self.session.config['bestchoice_b_payoff']
+        c = self.session.config['bestchoice_c_payoff']
+        d = self.session.config['bestchoice_d_payoff']
         for player in self.get_players():
             if player.decision == 1:  # A
                 player.revenue = (p * a) + ((1 - p) * b) + int(np.random.normal(0, self.session.config['sigma'], 1))
             else:
                 player.revenue = (p * c) + ((1 - p) * d) + int(np.random.normal(0, self.session.config['sigma'], 1))
-            print('revenue:', player.revenue)
+            # print('revenue:', player.revenue)
 
 
 class Player(BasePlayer):
