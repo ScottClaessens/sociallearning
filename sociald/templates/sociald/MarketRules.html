@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 2 - Market Rules
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Please read the following market rules for this experiment carefully.
+</p>
+<p>
+    On the next page, a short Quiz will check if you understood the market rules.
+</p>
+
+{% include Constants.rules %}
+
+{% next_button %}
+
+{% endblock %}

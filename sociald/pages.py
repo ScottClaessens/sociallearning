@@ -4,6 +4,13 @@ from .models import Constants
 import random
 
 
+class NewGroups(WaitPage):
+    wait_for_all_groups = True
+
+    def after_all_players_arrive(self):
+        self.subsession.group_randomly()
+
+
 class Intro(Page):
     def is_displayed(self):
         return self.player.round_number == 1
@@ -20,21 +27,21 @@ class Quiz(Page):
 
     def quiz1_error_message(self, value):
         if value == 0:
-            return 'The answer above is incorrect. You CAN decide to produce Potatoes or Wheat in ' \
-                   'each Season of this experiment.'
+            return 'The answer above is incorrect. New groups HAVE been formed randomly.'
 
     def quiz2_error_message(self, value):
         if value == 0:
-            return 'The answer above is incorrect. Before your decision, you CAN collect information ' \
-                   'about the decisions of others.'
+            return 'The answer above is incorrect. In each Season of this experiment, you CAN ' \
+                   'decide to use Pesticides to produce your Apples.'
 
     def quiz3_error_message(self, value):
         if value == 1:
-            return 'The answer above is incorrect. Your revenue DOES NOT depend on the decisions of other Farmers.'
+            return 'The answer above is incorrect. The value of ALL Apples is LOWER when I choose to use Pesticides.'
 
     def quiz4_error_message(self, value):
         if value == 0:
-            return 'The answer above is incorrect. New groups WILL be formed randomly after this experiment.'
+            return 'The answer above is incorrect. The value of all Apples is highest if ALL Farmers produce ' \
+                   'their Apples WITHOUT using Pesticides.'
 
     def is_displayed(self):
         return self.player.round_number == 1
@@ -157,8 +164,7 @@ class ResultsWait(WaitPage):
 
 class Results(Page):
     def vars_for_template(self):
-        return {'decision': self.player.get_decision_display(),
-                'earnings': self.player.revenue - int(self.player.sl1 or 0)*25}
+        return {'earnings': self.player.revenue - int(self.player.sl1 or 0)*25}
 
     timeout_seconds = 10
 
@@ -181,6 +187,7 @@ class Final(Page):
 
 
 page_sequence = [
+    NewGroups,
     Intro,
     MarketRules,
     Quiz,

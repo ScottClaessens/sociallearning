@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 2 - Quiz
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Before the Seasons for this experiment start, a short Quiz will check if you understood the Market Rules.
+</p>
+
+{% formfield player.quiz1 label="New groups have been formed randomly." %}
+{% formfield player.quiz2 label="In each Season of this experiment, I can decide to use Pesticides to produce my Apples." %}
+{% formfield player.quiz3 label="The value of all Apples is higher when I choose to use Pesticides." %}
+{% formfield player.quiz4 label="The value of all Apples is highest, if all Farmers produce their Apples without using Pesticides." %}
+
+{% include Constants.rules %}
+
+{% next_button %}
+
+{% endblock %}

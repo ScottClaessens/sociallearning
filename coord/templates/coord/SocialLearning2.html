@@ -1,0 +1,56 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 3 - Season {{ player.round_number }}
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+table {
+    text-align: center;
+    vertical-align: middle;
+    width: 10%;
+    float: left;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<p>
+Collect up to six pieces of information, and then click Next to proceed.
+</p>
+
+<table class="table">
+    <tr>
+        <th></th>
+        {% for p in other_players %}
+            <td>{{ p }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th align="right">Previous decision:</th>
+        {% for field in form %}
+            {% if forloop.counter|divisibleby:2 %}
+            {% else %}
+                <td style="font-size:1px">{% formfield field label='' %}</td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>Previous revenue:</th>
+        {% for field in form %}
+            {% if forloop.counter|divisibleby:2 %}
+                <td style="font-size:1px">{% formfield field label='' %}</td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+</table>
+<br>
+
+{% next_button %}
+
+{% include Constants.rules %}
+
+{% endblock %}

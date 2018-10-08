@@ -4,6 +4,13 @@ from .models import Constants
 import random
 
 
+class NewGroups(WaitPage):
+    wait_for_all_groups = True
+
+    def after_all_players_arrive(self):
+        self.subsession.group_randomly()
+
+
 class Intro(Page):
     def is_displayed(self):
         return self.player.round_number == 1
@@ -20,21 +27,23 @@ class Quiz(Page):
 
     def quiz1_error_message(self, value):
         if value == 0:
-            return 'The answer above is incorrect. You CAN decide to produce Potatoes or Wheat in ' \
-                   'each Season of this experiment.'
+            return 'The answer above is incorrect. The revenues of your decision DO ' \
+                   'depend on the decisions of the other Farmers.'
 
     def quiz2_error_message(self, value):
         if value == 0:
-            return 'The answer above is incorrect. Before your decision, you CAN collect information ' \
-                   'about the decisions of others.'
+            return 'The answer above is incorrect. The more Farmers decide to produce a certain Crop, the MORE ' \
+                   'discount the Supplier will give.'
 
     def quiz3_error_message(self, value):
-        if value == 1:
-            return 'The answer above is incorrect. Your revenue DOES NOT depend on the decisions of other Farmers.'
+        if value == 0:
+            return 'The answer above is incorrect. The more Farmers decide to produce Melons, the HIGHER the ' \
+                   'revenues of Melons will be.'
 
     def quiz4_error_message(self, value):
         if value == 0:
-            return 'The answer above is incorrect. New groups WILL be formed randomly after this experiment.'
+            return 'The answer above is incorrect. The more Farmers decide to produce Pumpkins, the HIGHER the ' \
+                   'revenues of Pumpkins will be.'
 
     def is_displayed(self):
         return self.player.round_number == 1
@@ -181,6 +190,7 @@ class Final(Page):
 
 
 page_sequence = [
+    NewGroups,
     Intro,
     MarketRules,
     Quiz,

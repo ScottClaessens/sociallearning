@@ -6,7 +6,7 @@ from os import environ
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = {
-    'real_world_currency_per_point': 1.00,
+    'real_world_currency_per_point': 0.001,
     'participation_fee': 0.00,
     'doc': "",
 }
@@ -14,16 +14,18 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
         'name': 'sociallearning',
-        'display_name': "Social Learning",
+        'display_name': "Social Learning (Molleman, van den Berg, & Weissing, 2013)",
         'num_demo_participants': 8,
         'app_sequence': [#'intro',
-                         'bestchoice'],
+                         'bestchoice',
+                         'sociald',
+                         'coord'],
         'choices': 6,
         'sigma': 200,
         'bestchoice_a_payoff': 50,
         'bestchoice_b_payoff': 50,
         'bestchoice_c_payoff': 300,
-        'bestchoice_d_payoff': 50,
+        'bestchoice_d_payoff': 300,
         'sociald_a_payoff': 300,
         'sociald_b_payoff': -250,
         'sociald_c_payoff': 600,
@@ -64,6 +66,8 @@ ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
+# sentry
+SENTRY_DSN = 'http://d606c64efb5d449d9ac450ef47fef1b0:1f312687dcc6423fa67a65d3b78782dc@sentry.otree.org/143'
 
 # Consider '', None, and '0' to be empty/false
 DEBUG = (environ.get('OTREE_PRODUCTION') in {None, '', '0'})

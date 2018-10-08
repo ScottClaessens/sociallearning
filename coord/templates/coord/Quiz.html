@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 2 - Quiz
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Before the Seasons for this experiment start, a short Quiz will check if you understood the Market Rules.
+</p>
+
+{% formfield player.quiz1 label="In this experiment, the revenues of my decision depend on the decisions of the other Farmers." %}
+{% formfield player.quiz2 label="The more Farmers decide to produce a certain Crop, the more discount the Supplier will give. This will increase the revenues of this Crop." %}
+{% formfield player.quiz3 label="The more Farmers decide to produce Melons, the higher the revenues of Melons will be." %}
+{% formfield player.quiz4 label="The more Farmers decide to produce Pumpkins, the higher the revenues of Pumpkins will be." %}
+
+{% include Constants.rules %}
+
+{% next_button %}
+
+{% endblock %}

@@ -8,16 +8,16 @@ import numpy as np
 author = 'Scott Claessens'
 
 doc = """
-Social Learning Experiment - Best Choice
+Social Learning Experiment - Coordination
 """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'bestchoice'
+    name_in_url = 'coord'
     players_per_group = 8
     num_rounds = 3
 
-    rules = 'bestchoice/rules.html'
+    rules = 'coord/rules.html'
 
 
 class Subsession(BaseSubsession):
@@ -34,10 +34,10 @@ class Group(BaseGroup):
         p = count / 8
         # print('p:', p)
         # calculate revenue for each player
-        a = self.session.config['bestchoice_a_payoff']
-        b = self.session.config['bestchoice_b_payoff']
-        c = self.session.config['bestchoice_c_payoff']
-        d = self.session.config['bestchoice_d_payoff']
+        a = self.session.config['coord_a_payoff']
+        b = self.session.config['coord_b_payoff']
+        c = self.session.config['coord_c_payoff']
+        d = self.session.config['coord_d_payoff']
         for player in self.get_players():
             if player.decision == 1:  # A
                 player.revenue = (p * a) + ((1 - p) * b) + int(np.random.normal(0, self.session.config['sigma'], 1))
@@ -68,7 +68,7 @@ class Player(BasePlayer):
     sl2_6b = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
     sl2_7b = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
     sl2_8b = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
-    decision = models.IntegerField(choices=[[1, 'Potatoes'], [2, 'Wheat']], widget=widgets.RadioSelect)
+    decision = models.IntegerField(choices=[[1, 'Melons'], [2, 'Pumpkins']], widget=widgets.RadioSelect)
     revenue = models.CurrencyField()
 
     timeout_sl1 = models.BooleanField()

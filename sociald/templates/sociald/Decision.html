@@ -1,0 +1,54 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Experiment 2 - Season {{ player.round_number }}
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+table {
+    text-align: center;
+    vertical-align: middle;
+    width: 10%;
+    float: left;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% if player.round_number == 1 %}
+<p>
+You cannot collect information from other Farmers in the first Season.
+</p>
+{% elif player.sl1 == 1 %}
+<table class="table">
+    <tr>
+        <th></th>
+        {% for p in other_players %}
+            <th>{{ p }}</th>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>Previous decision:</th>
+        {% for q, p in zipped_top %}
+            {% if q %}<td>{{ p }}</td>{% else %}<td></td>{% endif %}
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>Previous revenue:</th>
+        {% for q, p in zipped_bottom %}
+            {% if q %}<td>{{ p|c }}</td>{% else %}<td></td>{% endif %}
+        {% endfor %}
+    </tr>
+</table>
+{% endif %}
+
+<b>{% formfield player.decision label="Do you want to spray Pesticides during the production of your Apples this Season?" %}</b>
+
+{% next_button %}
+
+{% include Constants.rules %}
+
+{% endblock %}
